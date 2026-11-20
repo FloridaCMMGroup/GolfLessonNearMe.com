@@ -119,3 +119,7 @@ www.golflessonnearme.com already redirects to the bare domain inside `worker.js`
 ## 7. Analytics
 
 Turn on Cloudflare Web Analytics for the Worker (no code change; the content security policy already allows it). If you add Google Analytics later, add its domains to `_headers`. The page already fires a `call_requested` event into `dataLayer` and `gtag` when a request goes through.
+
+## Google Tag Manager
+
+Container `GTM-K8LG8RVQ` is loaded in the `<head>` of every page. The setup code is in `analytics.js` because the content security policy in `_headers` does not allow inline scripts; `_headers` also allows the Google Tag Manager and Google Analytics domains. If the container adds tags from other services (for example a Meta pixel), add their domains to `_headers` too. Keep these when applying a new client zip.
